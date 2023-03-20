@@ -27,11 +27,17 @@ const removeContact = async (contactId) => {
 }
 
 const addContact = async ({name, email, phone}) => {
-  return Contacts.create({id, name, email, phone});
+  return Contacts.create({name, email, phone});
 }
 
 const updateContact = async (contactId, body) => {
   return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
+}
+
+//Was duplicated until there is no separate logic for it
+const updateStatusContact = async (contactId, body) => { 
+  return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
+
 }
 
 module.exports = {
@@ -40,4 +46,5 @@ module.exports = {
   removeContact,
   addContact,
   updateContact,
+  updateStatusContact,
 }
