@@ -1,15 +1,4 @@
-const fs = require('fs/promises');
-const path = require("path");
-
-const { v4: uuidv4 } = require('uuid');
-
 const { Contacts } = require('./schema/contactsSchema');
-
-
-
-
-const contactsPath = path.join(__dirname, "../models/contacts.json");
-
 
 const getListContacts = async () => {
   return Contacts.find();
@@ -34,7 +23,7 @@ const updateContact = async (contactId, body) => {
   return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
 }
 
-//Was duplicated until there is no separate logic for it
+// Was duplicated until there is no separate logic for it
 const updateStatusContact = async (contactId, body) => { 
   return Contacts.findByIdAndUpdate({ _id: contactId }, body, { new: true });
 

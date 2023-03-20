@@ -14,19 +14,21 @@ const getContactDataByIdController = async (req, res, next) => {
     const contactDataById = await getContactById(id);
     if (!contactDataById) {
         return res.status(404).json({ "message": `Contact with id ${id} wasn't  found` });
-
     }
+
     res.status(200).json(contactDataById);
 };
 
 
 const addNewContactController = async (req, res, next) => {
     const newContact = await addContact(req.body);
+
     res.status(201).json(newContact);
 };
 
 const deleteContactByIdController = async (req, res, next) => {
-    const id  = req.params.contactId;
+    const id = req.params.contactId;
+    
     const contactById = await getContactById(id);
     if (!contactById) {
         return res.status(404).json({ "message": `Contact with id ${id} wasn't  found` });
