@@ -22,6 +22,8 @@ router.post('/', addContactValidation, asyncWrapper(addNewContact));
 
 router.delete('/:contactId', asyncWrapper(deleteContactById));
 
-router.put('/:contactId', addContactValidation, asyncWrapper(updateContactById) )
+router.put('/:contactId', addContactValidation, asyncWrapper(updateContactById));
+
+router.patch('/:contactId/favorite', addContactValidation, asyncWrapper(updateContactById));
 
 module.exports = router;
