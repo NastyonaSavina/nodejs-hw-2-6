@@ -7,11 +7,11 @@ const {
   deleteContactByIdController,
   updateContactByIdController,
   updateStatusContactController,
-} = require('../../controllers/contactsController');
+} = require('../../controllers/contacts/index');
 
-const { asyncWrapper } = require('../../helpers/apiHelpers');
+const { asyncWrapper } = require("../../helpers/index");
 
-const {addContactValidation, updateStatusContactValidation } = require('../../middlewares/validationMiddleware');
+const {addContactValidation, updateStatusContactValidation } = require('../../middlewares/index');
 
 const router = express.Router();
 

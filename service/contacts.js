@@ -2,8 +2,7 @@ const { Contacts } = require('./schema/contactsSchema');
 
 const getListContacts = async () => {
   return Contacts.find();
-   
- 
+    
 }
 
 const getContactById = async (contactId) => {
