@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const gravatar = require('gravatar');
+
 
 
 const { User } = require('./userSchema');
@@ -14,7 +16,8 @@ const registration = async (email, password) => {
     
     const createdUser = new User({
         email,
-        password: await bcrypt.hash(password, 10)
+        password: await bcrypt.hash(password, 10),
+        avatarURL: gravatar.url(email),
     });
     await createdUser.save();
 

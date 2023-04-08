@@ -6,11 +6,11 @@ const { User } = require('../../service/users/userSchema');
 
 
 const authMiddleware = async (req, res, next) => {
-    if (!req.headers['authorization']) {
+    if (!req.headers.authorization) {
         next(new NotAuthorizedError("Please, provide a token"));
     }
     try {
-        const [, token] = req.headers['authorization'].split(' ');
+        const [, token] = req.headers.authorization.split(' ');
 
         if (!token) {
             next(new NotAuthorizedError('Not authorized-no valid token'));
