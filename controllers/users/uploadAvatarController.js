@@ -23,13 +23,16 @@ const uploadAvatarController = async (req, res) => {
     const resultUpload = path.join(avatarsDir, filename);
 
     await fs.rename(tempUpload, resultUpload);
-    const avatarURL = path.join("public", "avatars", filename);
 
-    await User.findByIdAndUpdate(_id, { avatarURL });
+    const avatarURL = path.join("public", "avatars", filename);
     updateImgAvatar(avatarURL);
+
+    const publicUrl = path.join("avatars", filename);
+    await User.findByIdAndUpdate(_id, { avatarURL: publicUrl});
+
     
     res.json({
-        avatarURL,
+        publicUrl,
     });
 }
 
