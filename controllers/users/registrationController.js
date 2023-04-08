@@ -12,7 +12,8 @@ module.exports = {
     res.status(201).json({
         user: {
         email: newUser.email,
-        subsription: newUser.subscription
+        subsription: newUser.subscription,
+        avatarURL:newUser.avatarURL,
         }
     });
 }
