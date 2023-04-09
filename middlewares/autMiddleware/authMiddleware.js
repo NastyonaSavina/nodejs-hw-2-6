@@ -10,9 +10,9 @@ const authMiddleware = async (req, res, next) => {
         next(new NotAuthorizedError("Please, provide a token"));
     }
     try {
-        const [, token] = req.headers.authorization.split(' ');
+        const [bearer, token] = req.headers.authorization.split(' ');
 
-        if (!token) {
+        if (!token || bearer!== "Bearer") {
             next(new NotAuthorizedError('Not authorized-no valid token'));
         }
     
