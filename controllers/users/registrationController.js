@@ -8,7 +8,7 @@ module.exports = {
         password
     } = req.body;
 
-    const newUser= await registration(email, password);
+    await registration(email, password);
     res.status(201).json({
         "message": "Please check your email and confirm registration"
     });

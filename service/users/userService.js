@@ -10,7 +10,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 const { User } = require('./userSchema');
-const {userVerification} = require('../userVerification/userVerificationSchema')
+const { UserVerification } = require('../userVerification/userVerificationSchema');
 const { RegistrationConflictError, NotAuthorizedError, ResendingVerificationError} = require("../../helpers/index");
 const { VerificationError } = require("../../helpers/index");
 
@@ -30,7 +30,7 @@ const registration = async (email, password) => {
 
     const verificationCode = uuidv4();
 
-    const verification = new userVerification({
+    const verification = new UserVerification({
         code: verificationCode,
         userId: createdUser._id,
     })
@@ -51,7 +51,8 @@ const registration = async (email, password) => {
 
 }
 const registrationConfirmation = async (verificationToken) => {
-    const verification = await userVerification.findOne({
+
+    const verification = await UserVerification.findOne({
         code: verificationToken,
         active: true
 
@@ -96,7 +97,7 @@ const resendingConfirmation = async (email) => {
         throw new ResendingVerificationError("Verification has already been passed");
     }
     
-    const verification = await userVerification.findOne({
+     const verification = await UserVerification.findOne({
         userId: user._id,
     });
 
