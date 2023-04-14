@@ -3,7 +3,7 @@ const { updateStatusContactValidation } = require("./validation/updateStatusCont
 const { addUserValidation } = require("./validation/addUserValidation");
 const { authMiddleware } = require("./autMiddleware/authMiddleware");
 const { updateContactValidation } = require("./validation/updateContactValidation");
-const { uploadAvatarMiddleware}= require("./uploadMiddleware/uploadAvatarMiddleware")
+const { uploadAvatarMiddleware } = require("./uploadMiddleware/uploadAvatarMiddleware");
 
 
 
