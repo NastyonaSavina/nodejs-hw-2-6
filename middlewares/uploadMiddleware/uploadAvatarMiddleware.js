@@ -15,4 +15,4 @@ const uploadAvatarMiddleware = multer({ storage });
 
 module.exports = {
     uploadAvatarMiddleware
-}
+};

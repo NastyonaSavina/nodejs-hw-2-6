@@ -10,11 +10,7 @@ module.exports = {
 
     const newUser= await registration(email, password);
     res.status(201).json({
-        user: {
-        email: newUser.email,
-        subsription: newUser.subscription,
-        avatarURL:newUser.avatarURL,
-        }
+        "message": "Please check your email and confirm registration"
     });
 }
     

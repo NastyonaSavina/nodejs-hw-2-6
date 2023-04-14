@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-// const bcrypt = require('bcrypt');
 
 
 const userSchema = new mongoose.Schema({
@@ -17,19 +16,23 @@ const userSchema = new mongoose.Schema({
         enum: ["starter", "pro", "business"],
         default: "starter"
     },
+    verify: {
+        type: Boolean,
+        default: false,
+    },
+    verificationToken: {
+        type: String,
+        // required: [true, 'Verify token is required'],
+    },
     token: String,
     avatarURL: String,
+    
 
 },
     { versionKey: false, timestamps: true},
 
 )
 
-// userSchema.pre('save', async function() { 
-//     if (this.isNew) {
-//         this.password = await bcrypt.hash(this.password, 10)
-//     }
-// })
 
 const User = mongoose.model('user', userSchema);
 
